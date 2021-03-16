@@ -32,19 +32,21 @@ namespace Dynamic_Grade_Calculator
             this.components = new System.ComponentModel.Container();
             this.errorProviderPaperNumbers = new System.Windows.Forms.ErrorProvider(this.components);
             this.homePage = new System.Windows.Forms.TabPage();
-            this.numberOfPapers = new System.Windows.Forms.Label();
-            this.generateTable = new System.Windows.Forms.Button();
-            this.saveButton = new System.Windows.Forms.Button();
-            this.overallGrade = new System.Windows.Forms.TextBox();
-            this.numberOfPapersInput = new System.Windows.Forms.TextBox();
-            this.nameOfSubjectInput = new System.Windows.Forms.TextBox();
-            this.nameOfSubject = new System.Windows.Forms.Label();
-            this.loadButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.loadButton = new System.Windows.Forms.Button();
+            this.nameOfSubject = new System.Windows.Forms.Label();
+            this.nameOfSubjectInput = new System.Windows.Forms.TextBox();
+            this.numberOfPapersInput = new System.Windows.Forms.TextBox();
+            this.overallGrade = new System.Windows.Forms.TextBox();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.generateTable = new System.Windows.Forms.Button();
+            this.numberOfPapers = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.errorProviderSubjectName = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPaperNumbers)).BeginInit();
             this.homePage.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSubjectName)).BeginInit();
             this.SuspendLayout();
             // 
             // errorProviderPaperNumbers
@@ -72,43 +74,46 @@ namespace Dynamic_Grade_Calculator
             this.homePage.Text = "Home ";
             this.homePage.TextChanged += new System.EventHandler(this.generateTable_Click);
             // 
-            // numberOfPapers
+            // label1
             // 
-            this.numberOfPapers.AutoSize = true;
-            this.numberOfPapers.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numberOfPapers.Location = new System.Drawing.Point(409, 302);
-            this.numberOfPapers.Name = "numberOfPapers";
-            this.numberOfPapers.Size = new System.Drawing.Size(351, 46);
-            this.numberOfPapers.TabIndex = 23;
-            this.numberOfPapers.Text = "Number Of Papers";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(409, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(266, 46);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Overall Grade";
             // 
-            // generateTable
+            // loadButton
             // 
-            this.generateTable.Location = new System.Drawing.Point(31, 297);
-            this.generateTable.Name = "generateTable";
-            this.generateTable.Size = new System.Drawing.Size(184, 74);
-            this.generateTable.TabIndex = 20;
-            this.generateTable.Text = "Create New Table";
-            this.generateTable.UseVisualStyleBackColor = true;
-            this.generateTable.Click += new System.EventHandler(this.generateTable_Click);
+            this.loadButton.Location = new System.Drawing.Point(31, 37);
+            this.loadButton.Name = "loadButton";
+            this.loadButton.Size = new System.Drawing.Size(184, 74);
+            this.loadButton.TabIndex = 18;
+            this.loadButton.Text = "Load";
+            this.loadButton.UseVisualStyleBackColor = true;
             // 
-            // saveButton
+            // nameOfSubject
             // 
-            this.saveButton.Location = new System.Drawing.Point(31, 164);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(184, 74);
-            this.saveButton.TabIndex = 19;
-            this.saveButton.Text = "Save";
-            this.saveButton.UseVisualStyleBackColor = true;
+            this.nameOfSubject.AutoSize = true;
+            this.nameOfSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameOfSubject.Location = new System.Drawing.Point(409, 169);
+            this.nameOfSubject.Name = "nameOfSubject";
+            this.nameOfSubject.Size = new System.Drawing.Size(325, 46);
+            this.nameOfSubject.TabIndex = 25;
+            this.nameOfSubject.Text = "Name Of Subject";
             // 
-            // overallGrade
+            // nameOfSubjectInput
             // 
-            this.overallGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.overallGrade.Location = new System.Drawing.Point(417, 91);
-            this.overallGrade.Name = "overallGrade";
-            this.overallGrade.Size = new System.Drawing.Size(70, 53);
-            this.overallGrade.TabIndex = 21;
-            this.overallGrade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nameOfSubjectInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameOfSubjectInput.Location = new System.Drawing.Point(417, 218);
+            this.nameOfSubjectInput.MaxLength = 30;
+            this.nameOfSubjectInput.Name = "nameOfSubjectInput";
+            this.nameOfSubjectInput.Size = new System.Drawing.Size(317, 53);
+            this.nameOfSubjectInput.TabIndex = 26;
+            this.nameOfSubjectInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nameOfSubjectInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nameOfSubjectInput_KeyPress);
+            this.nameOfSubjectInput.Validating += new System.ComponentModel.CancelEventHandler(this.nameOfSubjectInput_Validating);
             // 
             // numberOfPapersInput
             // 
@@ -122,45 +127,43 @@ namespace Dynamic_Grade_Calculator
             this.numberOfPapersInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberOfPapersInput_KeyPress);
             this.numberOfPapersInput.Validating += new System.ComponentModel.CancelEventHandler(this.numberOfPapersInput_Validating);
             // 
-            // nameOfSubjectInput
+            // overallGrade
             // 
-            this.nameOfSubjectInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameOfSubjectInput.Location = new System.Drawing.Point(417, 218);
-            this.nameOfSubjectInput.MaxLength = 30;
-            this.nameOfSubjectInput.Name = "nameOfSubjectInput";
-            this.nameOfSubjectInput.Size = new System.Drawing.Size(317, 53);
-            this.nameOfSubjectInput.TabIndex = 26;
-            this.nameOfSubjectInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.nameOfSubjectInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nameOfSubjectInput_KeyPress);
+            this.overallGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.overallGrade.Location = new System.Drawing.Point(417, 91);
+            this.overallGrade.Name = "overallGrade";
+            this.overallGrade.Size = new System.Drawing.Size(70, 53);
+            this.overallGrade.TabIndex = 21;
+            this.overallGrade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // nameOfSubject
+            // saveButton
             // 
-            this.nameOfSubject.AutoSize = true;
-            this.nameOfSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameOfSubject.Location = new System.Drawing.Point(409, 169);
-            this.nameOfSubject.Name = "nameOfSubject";
-            this.nameOfSubject.Size = new System.Drawing.Size(325, 46);
-            this.nameOfSubject.TabIndex = 25;
-            this.nameOfSubject.Text = "Name Of Subject";
+            this.saveButton.Location = new System.Drawing.Point(31, 164);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(184, 74);
+            this.saveButton.TabIndex = 19;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
             // 
-            // loadButton
+            // generateTable
             // 
-            this.loadButton.Location = new System.Drawing.Point(31, 37);
-            this.loadButton.Name = "loadButton";
-            this.loadButton.Size = new System.Drawing.Size(184, 74);
-            this.loadButton.TabIndex = 18;
-            this.loadButton.Text = "Load";
-            this.loadButton.UseVisualStyleBackColor = true;
+            this.generateTable.Location = new System.Drawing.Point(31, 297);
+            this.generateTable.Name = "generateTable";
+            this.generateTable.Size = new System.Drawing.Size(184, 74);
+            this.generateTable.TabIndex = 20;
+            this.generateTable.Text = "Create New Table";
+            this.generateTable.UseVisualStyleBackColor = true;
+            this.generateTable.Click += new System.EventHandler(this.generateTable_Click);
             // 
-            // label1
+            // numberOfPapers
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(409, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(266, 46);
-            this.label1.TabIndex = 22;
-            this.label1.Text = "Overall Grade";
+            this.numberOfPapers.AutoSize = true;
+            this.numberOfPapers.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numberOfPapers.Location = new System.Drawing.Point(409, 302);
+            this.numberOfPapers.Name = "numberOfPapers";
+            this.numberOfPapers.Size = new System.Drawing.Size(351, 46);
+            this.numberOfPapers.TabIndex = 23;
+            this.numberOfPapers.Text = "Number Of Papers";
             // 
             // tabControl1
             // 
@@ -170,6 +173,10 @@ namespace Dynamic_Grade_Calculator
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(800, 448);
             this.tabControl1.TabIndex = 27;
+            // 
+            // errorProviderSubjectName
+            // 
+            this.errorProviderSubjectName.ContainerControl = this;
             // 
             // MainForm
             // 
@@ -184,6 +191,7 @@ namespace Dynamic_Grade_Calculator
             this.homePage.ResumeLayout(false);
             this.homePage.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSubjectName)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -201,6 +209,7 @@ namespace Dynamic_Grade_Calculator
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button generateTable;
         private System.Windows.Forms.Label numberOfPapers;
+        private System.Windows.Forms.ErrorProvider errorProviderSubjectName;
     }
 }
 

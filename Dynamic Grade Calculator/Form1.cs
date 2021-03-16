@@ -15,7 +15,8 @@ namespace Dynamic_Grade_Calculator
     
     public partial class MainForm : Form
     {
-        string subjectName;
+        private string subjectName;
+        private int subjectNameLength;
 
         public MainForm()
         {
@@ -35,10 +36,12 @@ namespace Dynamic_Grade_Calculator
         {
             if (char.IsNumber(e.KeyChar) && (char.IsControl(e.KeyChar)))
             {
-                e.Handled = true;
-            }
+                e.Handled = true;                
+            }  
 
-            subjectName = nameOfSubjectInput.Text;
+            subjectName = nameOfSubjectInput.Text;            
+            subjectNameLength = nameOfSubjectInput.TextLength;
+            
         }
 
         private void numberOfPapersInput_Validating(object sender, CancelEventArgs e)
@@ -48,7 +51,7 @@ namespace Dynamic_Grade_Calculator
                 e.Cancel = true;
                 numberOfPapersInput.Focus();
                 errorProviderPaperNumbers.SetError(numberOfPapersInput, "Please enter the number of papers!");
-                MessageBox.Show(numberOfPapersInput, "Please enter the number of papers!");;
+                MessageBox.Show(numberOfPapersInput, "Please enter the number of papers!");
             }
             else
             {
@@ -61,8 +64,24 @@ namespace Dynamic_Grade_Calculator
         {            
             TabPage newTab = new TabPage(subjectName);
             Debug.WriteLine(subjectName);
+            Debug.WriteLine(subjectNameLength);
             tabControl1.TabPages.Add(newTab);
             Debug.WriteLine(numberOfPapersInput);
+        }
+
+        private void nameOfSubjectInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (subjectName.Equals(subjectNameLength))
+            {
+                e.Cancel = true;
+                nameOfSubjectInput.Focus();
+                errorProviderSubjectName.SetError(nameOfSubjectInput, "Please press either space or enter");
+                MessageBox.Show(nameOfSubjectInput, "Press enter or space");
+            }
+            else
+            {
+                e.Cancel = false;
+            }
         }
     }
 }
